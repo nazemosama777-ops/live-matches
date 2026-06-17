@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشغل البث المباشر للمباريات</title>
+    <title>البث المباشر للمباريات</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -18,12 +18,10 @@
         </div>
         
         <p class="text-sm text-center text-gray-400 mt-4">إذا توقف البث، قم بإعادة تحميل الصفحة لتحديث الاتصال بالسيرفر.</p>
-        <br>
-        <p>&copy;Created By Dev Nazem Osama</p>
     </div>
-
+    <br>
+        <p>Created By Dev Nazem Osama &copy;</p>
     <script>
-        // رابط الـ m3u8 الذي أرسلته
         const streamUrl = "https://s3.us-east-2.amazonaws.com/cdnh114/hls/0/stream.m3u8";
         const video = document.getElementById('video');
 
@@ -37,7 +35,6 @@
                 });
             });
         } 
-        // دعم متصفحات Safari (iOS) التي تدعم m3u8 بشكل طبيعي بدون مكتبات
         else if (video.canPlayType('application/vnd.apple.mpegurl')) {
             video.src = streamUrl;
             video.addEventListener('canplay', function() {
