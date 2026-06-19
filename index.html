@@ -6,41 +6,48 @@
     <title>البث المباشر للمباريات</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 </head>
-<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+<body class="bg-[#0d011f] text-white flex flex-col items-center justify-center min-h-screen p-4 select-none">
 
-    <div class="w-full max-w-3xl bg-gray-800 rounded-lg p-6 shadow-2xl border border-gray-700">
-        <h1 class="text-xl font-bold text-center text-emerald-400 mb-4">📺 شاشة البث المباشر للمباراة</h1>
+    <div class="w-full max-w-3xl bg-[#21013d] rounded-xl p-6 shadow-2xl border-2 border-[#5d2b96]">
         
-        <div class="relative aspect-video bg-black rounded-md overflow-hidden shadow-lg">
-            <video id="video" class="w-full h-full" controls autoplay playsinline></video>
+        <h1 class="text-xl font-bold text-center text-[#d1b4ef] mb-4 flex items-center justify-center gap-2">
+            <span>📺</span> شاشة البث المباشر للمباراة
+        </h1>
+        
+        <div class="relative aspect-video bg-black rounded-lg overflow-hidden shadow-inner border border-[#3b0266]">
+            
+            <iframe 
+                id="streamFrame"
+                src="https://8.kooralive360.com/albaplayer/bein-sports-hd-1/?serv=1" 
+                class="w-full h-full"
+                allowfullscreen="true" 
+                frameborder="0" 
+                scrolling="no"
+                sandbox="allow-scripts allow-same-origin allow-presentation allow-forms">
+            </iframe>
+            
         </div>
         
-        <p class="text-sm text-center text-gray-400 mt-4">لو البث قطع اعمل ريفرش للصفحة </p>
+        <p class="text-sm text-center text-purple-300 mt-4">لو البث قطع اعمل ريفرش للصفحة</p>
     </div>
+    
     <br>
-        <p>Created By Dev Nazem Osama &copy;</p>
-    <script>
-        const streamUrl = "https://live.kooraa7.cfd/tooore1_480/index.m3u8";
-        const video = document.getElementById('video');
+    <a href="https://web.facebook.com/profile.php?id=61589616394670" target="_blank"><p class="text-purple-400 text-sm font-semibold tracking-wide"><b>Created By Dev Nazem Osama &copy;</b></p></a>
+    <style>
+    .text-purple-400{
+        transition: 0.6s;
+        cursor: pointer;
+    }
+    .text-purple-400:hover{
+        color: aliceblue;
+    }
+    </style>
 
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(streamUrl);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                video.play().catch(err => {
-                    console.log("المتصفح يطلب ضغط زر التشغيل يدوياً لبدء الفيديو.");
-                });
-            });
-        } 
-        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-            video.src = streamUrl;
-            video.addEventListener('canplay', function() {
-                video.play();
-            });
-        }
+    <script>
+   
+        window.open = function() { return null; }; 
+        document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
 </html>
